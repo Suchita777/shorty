@@ -14,9 +14,6 @@
     input {
       border: 2px solid gray;
     }
-    input:focus {
-      border: 0 none;
-    }
   </style>
   <body
     style="
@@ -30,15 +27,46 @@
       padding: 0;
     "
   >
-    <div>
-      <h1>Shortned url : </h1>
+    <div
+      style="
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      "
+    >
+      <h1>Shortned url :</h1>
       <% if(link) { %>
-      <a href=`http://localhost:5000/${link}`>
-        https://localhost:5000/<%=link%>
-    </a>
+      <div style="display: flex; width: 50%; align-items: center">
+        <input
+          type="text"
+          value="http://localhost:5000/<%=link%>"
+          id="shortLink"
+          readonly
+          style="
+            text-align: center;
+            font-size: 1.5rem;
+            padding: 0.5em 0.5em 0.5em 0.5em;
+            border-radius: 0.2em;
+          "
+        />
+        <button style="margin-left: auto" onclick="copy()">Copy Link</button>
+      </div>
       <% } else { %>
       <div>Shorten a URL first</div>
       <% } %>
     </div>
   </body>
+  <script>
+    function copy() {
+      var copyText = document.getElementById("shortLink");
+
+      copyText.select();
+      copyText.setSelectionRange(0, 99999);
+
+      navigator.clipboard.writeText(copyText.value);
+
+      alert("Copied : " + copyText.value);
+    }
+  </script>
 </html>
