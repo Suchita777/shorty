@@ -1,22 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Shorty</title>
-  </head>
-  <style>
+</head>
+<style>
     @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
     body {
-      font-family: "Inter", sans-serif;
+        font-family: "Inter", sans-serif;
     }
+    
     input {
-      border: 2px solid gray;
+        border: 2px solid gray;
     }
-  </style>
-  <body
-    style="
+</style>
+
+<body style="
       height: 100vh;
       width: 100vw;
       display: flex;
@@ -25,48 +27,80 @@
       justify-content: center;
       margin: 0;
       padding: 0;
-    "
-  >
-    <div
-      style="
-        width: 50%;
+      background-image: url(https://4kwallpapers.com/images/walls/thumbs/8324.png);
+      background-repeat: no-repeat;
+      background-size: cover;
+    ">
+
+    <div style="
+    background-color: rgba(192, 191, 191, 0.418);
+    padding: 10px;
+    margin-bottom: 37%;
+    margin-right: 80%;
+    border: 1px solid rgb(90, 90, 90);
+    border-radius: 5px;">
+        <a style="
+        color: white;
+        text-decoration: none;
+        " href="/">
+            << Back</a>
+    </div>
+
+    <div style="
+        width: 30%;
+        height: max-content;
+        position: fixed;
+        margin-left: 0.5em;
+        background-color: rgba(192, 191, 191, 0.418);
+        padding: 2em 2em 2em 2em;
+        border: 1px solid rgb(90, 90, 90);
+        border-radius: 5px;
         display: flex;
         flex-direction: column;
-        align-items: center;
-      "
-    >
-      <h1>Shortned url :</h1>
-      <% if(link) { %>
-      <div style="display: flex; width: 50%; align-items: center">
-        <input
-          type="text"
-          value="http://localhost:5000/<%=link%>"
-          id="shortLink"
-          readonly
-          style="
-            text-align: center;
-            font-size: 1.5rem;
-            padding: 0.5em 0.5em 0.5em 0.5em;
-            border-radius: 0.2em;
-          "
-        />
-        <button style="margin-left: auto" onclick="copy()">Copy Link</button>
-      </div>
-      <% } else { %>
-      <div>Shorten a URL first</div>
-      <% } %>
+      ">
+        <h1 style="
+        color: white;
+        font-family: 'Times New Roman', Times, serif;
+        margin-top: 0; ">Shortned URL :</h1>
+        <% if(link) { %>
+            <div style="display: flex; width: 100%; align-items: center">
+                <input type="text" value="http://localhost:5000/<%=link%>" id="shortLink" readonly style="
+                height: max-content;
+                width: 100%;
+                font-size: 20px;
+                color: aqua;
+                background-color: transparent;
+                padding: 0.5em 0.5em 0.5em 0.5em;
+                border-left: 0;
+                border-right: 0;
+                border-top: 0;
+                border-width: 2px;
+                border-color: rgba(199, 199, 199, 0.808);
+                border-radius: 0.2em;
+          " />
+                <button style="
+                margin-left:10px; 
+                font-size: 23px;
+                border: none;
+                background-color: transparent;
+                " onclick="copy()" alt="Copy">&#128279;</button>
+            </div>
+            <% } else { %>
+                <div>Shorten a URL first</div>
+                <% } %>
     </div>
-  </body>
-  <script>
+</body>
+<script>
     function copy() {
-      var copyText = document.getElementById("shortLink");
+        var copyText = document.getElementById("shortLink");
 
-      copyText.select();
-      copyText.setSelectionRange(0, 99999);
+        copyText.select();
+        copyText.setSelectionRange(0, 99999);
 
-      navigator.clipboard.writeText(copyText.value);
+        navigator.clipboard.writeText(copyText.value);
 
-      alert("Copied : " + copyText.value);
+        alert("Copied : " + copyText.value);
     }
-  </script>
+</script>
+
 </html>
