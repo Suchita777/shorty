@@ -20,7 +20,12 @@ app.get("/:id", async (req: Request, res: Response) => {
 });
 
 app.post("/api/shorten", async (req: Request, res: Response) => {
-  const newShort = await prisma.links.create({ data: { link: req.body.link } });
+  const newShort = await prisma.links.create({
+    data: {
+      id: randString(5),
+      link: req.body.link,
+    },
+  });
   const link = newShort.id;
   res.render("shortened", { link });
 });
@@ -28,3 +33,16 @@ app.post("/api/shorten", async (req: Request, res: Response) => {
 app.listen(5000, () => {
   console.log("Server running at http://localhost:5000");
 });
+
+// Generate a random string of given length
+function randString(length: number) {
+  const characterSet =
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+  let string = "";
+  const charactersLength = characterSet.length;
+  for (let i = 0; i < length; i++) {
+    string += characterSet.charAt(Math.floor(Math.random() * charactersLength));
+  }
+  return string;
+}
