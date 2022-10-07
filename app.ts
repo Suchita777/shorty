@@ -34,8 +34,6 @@ app.listen(5000, () => {
   console.log("Server running at http://localhost:5000");
 });
 
-module.exports = app;
-
 // Generate a random string of given length
 function randString(length: number) {
   const characterSet =
