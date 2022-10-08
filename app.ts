@@ -30,8 +30,8 @@ app.post("/api/shorten", async (req: Request, res: Response) => {
   res.render("shortened", { link });
 });
 
-app.listen(5000, () => {
-  console.log("Server running at http://localhost:5000");
+app.listen(process.env.PORT, () => {
+  console.log(`Server running at http://localhost:${process.env.PORT}`);
 });
 
 // Generate a random string of given length
